@@ -6,7 +6,9 @@
     "dependencies": {
         "@deck.gl/core": "^8.0.12",
         "@deck.gl/layers": "^8.0.12",
-        "@turf/turf": "^5.1.6"
+        "@turf/area": "^6.0.1",
+        "@turf/center-of-mass": "^6.0.1",
+        "@turf/helpers": "^6.1.4"
     },
     "devDependencies": {
         "webpack": "^4.42.1",

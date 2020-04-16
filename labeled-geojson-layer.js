@@ -1,4 +1,6 @@
-import * as turf from "@turf/turf";
+import centerOfMass from "@turf/center-of-mass";
+import { polygon } from "@turf/helpers";
+import area from "@turf/area";
 import { CompositeLayer } from "@deck.gl/core";
 import { GeoJsonLayer, TextLayer } from "@deck.gl/layers";
 
@@ -29,14 +31,14 @@ function getLabelAnchors(feature) {
     case 'MultiPoint':
       return coordinates;
     case 'Polygon':
-      return [turf.centerOfMass(feature).geometry.coordinates];
+      return [centerOfMass(feature).geometry.coordinates];
     case 'MultiPolygon':
-      let polygons = coordinates.map(rings => turf.polygon(rings));
-      const areas = polygons.map(turf.area);
+      let polygons = coordinates.map(rings => polygon(rings));
+      const areas = polygons.map(area);
       const maxArea = Math.max.apply(null, areas);
       // Filter out the areas that are too small
       return polygons.filter((f, index) => areas[index] > maxArea * 0.5)
-        .map(f => turf.centerOfMass(f).geometry.coordinates);
+        .map(f => centerOfMass(f).geometry.coordinates);
     default:
       return [];
   }
