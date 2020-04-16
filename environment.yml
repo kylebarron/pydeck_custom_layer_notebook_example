@@ -1,0 +1,10 @@
+name: pydeck_custom_layer_notebook_example
+channels:
+  - conda-forge
+dependencies:
+  # Dev dependencies
+  - jupyter
+  - notebook
+  - pip
+  - pip:
+    - pydeck

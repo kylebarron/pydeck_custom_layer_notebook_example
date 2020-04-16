@@ -1,20 +1,42 @@
-Custom layers for pydeck
-========================
+## Custom layers for pydeck in Jupyter Notebook
 
 This repo is an example of how to create a custom deck.gl layer for use in pydeck.
 
+### Install
 
-```python
-layer = pydeck.Layer(
-    'LabeledGeoJsonLayer'
-    data,
-    filled=False,
-    billboard=False,
-    get_line_color=[180, 180, 180],
-    get_label='f.properties.name',
-    get_label_size=20,
-    get_label_color=[0, 64, 128],
-    label_size_units='"meters"',
-    line_width_min_pixels=1
-)
+Clone
+```
+git clone https://github.com/kylebarron/pydeck_custom_layer_notebook_example
+cd pydeck_custom_layer_notebook_example
+```
+
+Create the conda environment. This installs Jupyter and Jupyter Notebook from
+conda-forge and pydeck from pip.
+```bash
+conda env create -f environment.yml
+```
+
+Enter the environment:
+```
+source activate pydeck_custom_layer_notebook_example
+```
+
+Enable Pydeck:
+```
+jupyter nbextension install --sys-prefix --symlink --overwrite --py pydeck
+jupyter nbextension enable --sys-prefix --py pydeck
+```
+
+### Build bundle
+
+Build an iife bundle using rollup:
+```
+yarn install
+yarn run build-rollup
+```
+
+### Start example notebook:
+
+```
+jupyter notebook Example.ipynb
 ```
