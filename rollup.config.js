@@ -7,7 +7,7 @@ const config = {
   output: {
     file: "dist/rollup-bundle.js",
     format: "iife",
-    name: "LabeledGeoJSONLayerLibrary",
+    name: "LabeledGeoJsonLayerLibrary",
     globals: {
       "@deck.gl/core": "deck",
       "@deck.gl/layers": "deck",
